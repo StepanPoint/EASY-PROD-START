@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASY PROD START — генератор текстов для треков</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "@mlc-ai/web-llm": "https://esm.run/@mlc-ai/web-llm"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="hero">
+            <div class="logo">EASY PROD START <span>🎙️</span></div>
+            <div class="tagline">Генератор текстов для треков</div>
+            <div class="badge">⚡ Нейросеть работает прямо в браузере · Без интернета · Бесплатно</div>
+            <button class="open-studio-btn" id="openStudioBtn">🎧 ОТКРЫТЬ ЛИЧНУЮ СТУДИЮ</button>
+        </div>
+
+        <!-- Студия (скрыта в начале) -->
+        <div id="studioPanel" class="studio hidden">
+            <h3>🎛️ Генерация текста</h3>
+            
+            <!-- Статус загрузки модели -->
+            <div id="modelStatus" class="model-status">
+                ⏳ Загрузка нейросети... Подожди немного
+            </div>
+            
+            <!-- Настройки -->
+            <div class="settings-grid">
+                <div class="setting-row">
+                    <span class="setting-label">🗣️ Язык текста</span>
+                    <select id="lang">
+                        <option value="russian">Русский</option>
+                        <option value="english">English</option>
+                    </select>
+                </div>
+                
+                <div class="setting-row">
+                    <span class="setting-label">🥁 БПМ бита</span>
+                    <input type="number" id="bpm" value="90" step="5" min="60" max="180">
+                </div>
+                
+                <div class="setting-row">
+                    <span class="setting-label">🎯 Ударения (подстазки)</span>
+                    <label><input type="checkbox" id="stressMarks"> 🔺 Помечать ударения КАПСом</label>
+                </div>
+                
+                <div class="setting-row">
+                    <span class="setting-label">📝 Тема текста</span>
+                    <textarea id="topic" rows="2" placeholder="О чём трек? Пример: уличная философия, успех, любовь..."></textarea>
+                </div>
+                
+                <div class="setting-row">
+                    <span class="setting-label">🎼 Структура</span>
+                    <div style="display:flex; gap:1rem;">
+                        <label>Куплетов <input type="number" id="verses" min="0" max="4" value="2" style="width:60px;"></label>
+                        <label>Припевов <input type="number" id="choruses" min="0" max="4" value="1" style="width:60px;"></label>
+                    </div>
+                </div>
+                
+                <div class="setting-row">
+                    <span class="setting-label">✨ Стиль</span>
+                    <select id="vibe">
+                        <option value="street">Уличный / агрессивный</option>
+                        <option value="emotional">Эмоциональный / мелодичный</option>
+                        <option value="abstract">Абстрактный / образный</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="primary" id="generateBtn">🚀 Сгенерировать текст</button>
+            
+            <div id="resultBox" class="result-area" style="display:none;"></div>
+            <div class="action-buttons" id="copyBtnArea" style="display:none;">
+                <button id="copyBtn">📋 Копировать текст</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
