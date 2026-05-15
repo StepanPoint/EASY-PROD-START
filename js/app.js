@@ -32,7 +32,7 @@ openBtn.addEventListener('click', () => {
 // Инициализация нейросети
 async function initModel() {
     try {
-        modelStatusDiv.innerHTML = "📥 Загрузка нейросети... (первые 5-10 минут, потом всегда быстро)";
+        modelStatusDiv.innerHTML = "📥 Загрузка нейросети... (первые 5-10 минут, потом всегда быстро) ";
         modelStatusDiv.style.background = "#2a3a2a";
         
         engine = new webllm.MLCEngine();
@@ -85,7 +85,7 @@ async function generateLyrics() {
     }
     
     // Промпт для нейросети
-    const prompt = `Ты профессиональный автор рэп-текстов. Напиши текст песни на ${langName} языке.
+    const prompt = `Ты профессиональный автор текстов. Напиши текст песни на ${langName} языке. а так же следуй параметрам которые тебе были выданы при генерации и СЛЕДУЙ СТРОГО ИМ. Так же в ответе пиши ТОЛЬКО ТЕКСТ без всяких обожначений бпм в конце или пояснений
 
 Параметры:
 - Тема: ${topic}
@@ -107,7 +107,7 @@ ${'[ПРИПЕВ]\n' + '...\n'.repeat(choruses)}
     
     try {
         const messages = [
-            { role: "system", content: "Ты профессиональный автор рэп-текстов. Отвечаешь только текстом песен." },
+            { role: "system", content: "Ты профессиональный автор текстов. Отвечаешь только текстом песен." },
             { role: "user", content: prompt }
         ];
         
